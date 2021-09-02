@@ -4,7 +4,9 @@ var express = require('express');
 app = express();
 
 app.get('/', function (req, res) {
-  res.send('Hello World');
+  let hostName = process.env.HOSTNAME.split('-');
+  let appName = hostName[0] + '-' + hostName[1];
+  res.send('Hello World from pod: ' + appName + '\n');
 });
 
 app.listen(8080, function () {
